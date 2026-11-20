@@ -3,23 +3,82 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>GTA VI trophy checklist</title>
+<title>Leonida Trophy Guide — GTA VI · PS5</title>
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<header>
-  <h1>GTA VI trophy checklist</h1>
-  <p id="progress">0 of 55 earned</p>
+<header class="banner">
+  <div class="banner-inner">
+    <p class="eyebrow">Grand Theft Auto VI &middot; PlayStation 5 &middot; Unofficial fan guide</p>
+    <h1>Leonida Trophy Guide</h1>
+    <p class="tagline">Every one of the 55 official trophies — what it asks, how to earn it, and the road to the platinum. Works fully offline.</p>
+    <div class="progress-wrap" aria-label="Trophies earned">
+      <div class="progress-bar"><div id="progressFill" class="progress-fill" style="width:0%"></div></div>
+      <p id="progressText" class="progress-text">0 of 55 earned</p>
+    </div>
+    <p id="gradeCounts" class="grade-counts"></p>
+  </div>
 </header>
-<div class="controls">
-  <label>Grade <select id="grade"><option value="all">All</option><option value="platinum">Platinum</option><option value="gold">Gold</option><option value="silver">Silver</option><option value="bronze">Bronze</option></select></label>
-  <button id="export" type="button">Export progress</button>
-  <label class="import">Import progress <input id="import" type="file" accept="application/json"></label>
-</div>
-<table>
-  <thead><tr><th>Earned</th><th>Trophy</th><th>Grade</th><th>How to get it</th></tr></thead>
-  <tbody id="rows"></tbody>
-</table>
+
+<aside class="missable-banner" id="missableBanner">
+  <strong>One trophy can pass you by.</strong>
+  <span><strong>Positive Mental Attitude</strong> (meditate at every spot) has a first meditation at Jason&rsquo;s house that only exists in Chapter&nbsp;1 — after the mission <em>Down to Earth</em>, talk to Lucia in the kitchen in the morning, follow her to the balcony and accept. Keep a manual save from Chapter&nbsp;1. Everything else can be done after the story.</span>
+</aside>
+
+<nav class="tabs" aria-label="Guide sections">
+  <button type="button" id="tabChecklist" class="tab active" aria-current="page">Checklist</button>
+  <button type="button" id="tabRoadmap" class="tab">Roadmap to the Platinum</button>
+</nav>
+
+<section id="checklistPane" aria-label="Trophy checklist">
+  <div class="controls">
+    <label class="search">Search
+      <input id="search" type="search" placeholder="Trophy, mission or place…" autocomplete="off">
+    </label>
+    <fieldset class="kinds" id="kindFilters" aria-label="Filter by kind">
+      <legend>Kind</legend>
+      <button type="button" data-kind="all" class="kind active">All 55</button>
+      <button type="button" data-kind="story" class="kind">Story</button>
+      <button type="button" data-kind="missable" class="kind">Missable</button>
+      <button type="button" data-kind="collectibles" class="kind">Collectibles</button>
+      <button type="button" data-kind="activities" class="kind">Activities</button>
+      <button type="button" data-kind="online" class="kind">Online</button>
+    </fieldset>
+    <label class="grade">Grade
+      <select id="grade">
+        <option value="all">All grades</option>
+        <option value="platinum">Platinum</option>
+        <option value="gold">Gold</option>
+        <option value="silver">Silver</option>
+        <option value="bronze">Bronze</option>
+      </select>
+    </label>
+    <label class="check"><input id="spoiler" type="checkbox"> Spoiler-safe: hide story trophies until earned</label>
+    <label class="check"><input id="hideEarned" type="checkbox"> Hide earned</label>
+    <span class="io">
+      <button id="export" type="button">Export progress</button>
+      <label class="import">Import progress <input id="import" type="file" accept="application/json,.json"></label>
+    </span>
+  </div>
+  <p id="resultCount" class="result-count" aria-live="polite"></p>
+  <div id="cards" class="cards"></div>
+  <p id="emptyState" class="empty" hidden></p>
+</section>
+
+<section id="roadmapPane" aria-label="Roadmap to the platinum" hidden>
+  <div class="roadmap-intro">
+    <h2>Roadmap to the platinum</h2>
+    <p>One playthrough, no online trophies, about 200 hours by the guides&rsquo; estimates, difficulty around 4/10. The story takes 60–80 hours; the 100% checklist is the long tail. Cheats disable trophies and saving, so leave them until every trophy is earned. There is no mission replay — keep a manual save at the start and end of each chapter.</p>
+  </div>
+  <ol id="roadmapStages" class="stages"></ol>
+</section>
+
+<footer>
+  <p>Official trophy names, descriptions and grades are as PlayStation publishes them, cross-checked on Exophase and PSNProfiles. Every guide is written for this page, in its own words, and cites its sources beside each trophy.</p>
+  <p>Sources: <a href="https://www.powerpyx.com/gta-6-grand-theft-auto-vi-trophy-guide-roadmap/">PowerPyx — GTA 6 Trophy Guide &amp; Roadmap</a> · <a href="https://www.pushsquare.com/guides/gta-6-trophy-guide-and-roadmap">Push Square — GTA 6 Trophy Guide and Roadmap</a> · <a href="https://www.keengamer.com/articles/guides/gta-6-trophy-guide-platinum-roadmap-all-55-trophies/">KeenGamer — GTA 6 Trophy Guide &amp; Platinum Roadmap</a> · <a href="https://www.planetgta6.com/en/gta-6-trophies/">Planet GTA 6 — GTA 6 Trophies</a></p>
+  <p>Unofficial fan guide. Not affiliated with, endorsed by or connected to Rockstar Games. No Rockstar artwork or logos are used. Your checklist is saved only in this browser (localStorage) and never leaves your device.</p>
+</footer>
+
 <script type="module" src="app.js"></script>
 </body>
 </html>
